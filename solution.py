@@ -1,6 +1,11 @@
 assignments = []
 rows = 'ABCDEFGHI'
-cols = '123456789'
+cols = '123456789
+
+def cross(A, B):
+    "Cross product of elements in A and elements in B."
+    return [a+b for a in A for b in B]
+
 boxes = cross(rows, cols)
 row_units = [cross(r, cols) for r in rows]
 col_units = [cross(c, rows) for c in cols]
@@ -33,10 +38,6 @@ def naked_twins(values):
 
     # Find all instances of naked twins
     # Eliminate the naked twins as possibilities for their peers
-
-def cross(A, B):
-    "Cross product of elements in A and elements in B."
-    return [a+b for a in A for b in B]
 
 def grid_values(grid):
     """
@@ -114,6 +115,9 @@ def solve(grid):
     Returns:
         The dictionary representation of the final sudoku grid. False if no solution exists.
     """
+    values = grid_values(grid)
+    search_value = search(values)
+    return search_value if search_value != False else False
 
 if __name__ == '__main__':
     diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
