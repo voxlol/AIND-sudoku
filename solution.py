@@ -35,9 +35,15 @@ def naked_twins(values):
     Returns:
         the values dictionary with the naked twins eliminated from peers.
     """
-
-    # Find all instances of naked twins
-    # Eliminate the naked twins as possibilities for their peers
+    for unit in unitlist:
+        twins = set([box for box in unit if len(values[box]) == 2 and unit.count(values[box]) == 2]) # find all unique twins in a set
+        for twin in twins:
+            twin_val = values[twin]
+            for digit in twin_val: # for each digit in a unique twin, iterate through the current unit and remove the digit from its value
+                for u in unit:
+                    if values[u] != twin_val:
+                        values = assign_value(values, u, values[u].replace(digit, ''))
+        return values
 
 def grid_values(grid):
     """
