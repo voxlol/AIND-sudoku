@@ -24,7 +24,7 @@ def naked_twins(values):
 
 def cross(A, B):
     "Cross product of elements in A and elements in B."
-    pass
+    return [a+b for a in A for b in B]
 
 def grid_values(grid):
     """
