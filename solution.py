@@ -2,6 +2,13 @@ assignments = []
 rows = 'ABCDEFGHI'
 cols = '123456789'
 boxes = cross(rows, cols)
+row_units = [cross(r, cols) for r in rows]
+col_units = [cross(c, rows) for c in cols]
+box_units = [cross(r,c) for r in ('ABC', 'DEF', 'GHI') for c in ('123', '456', '789')]
+diagonal_units = [
+    [r+c for r,c in zip(rows,cols)],
+    [r+c for r,c in zip(rows,reversed(cols))]]
+unitlist = row_units + col_units + box_units + diagonal_units
 
 def assign_value(values, box, value):
     """
