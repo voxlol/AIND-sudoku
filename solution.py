@@ -36,7 +36,10 @@ def grid_values(grid):
             Keys: The boxes, e.g., 'A1'
             Values: The value in each box, e.g., '8'. If the box has no value, then the value will be '123456789'.
     """
-    pass
+    rows = 'ABCDEFGHI'
+    cols = '123456789'
+    boxes = cross(rows, cols)
+    return {k:v for k,v in zip(boxes, grid)}
 
 def display(values):
     """
