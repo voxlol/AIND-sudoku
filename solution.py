@@ -10,7 +10,7 @@ diagonal_units = [
     [r+c for r,c in zip(rows,reversed(cols))]]
 unitlist = row_units + col_units + box_units + diagonal_units
 units = {s: [u for u in unitlist if s in u] for s in boxes} # map box to units
-peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
+peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes) # map box to peers
 
 def assign_value(values, box, value):
     """
@@ -65,7 +65,12 @@ def display(values):
     print
 
 def eliminate(values):
-    pass
+    solved_boxes = [box for box in values.keys() if len(values[box]) == 1]
+    for box in solved_boxes:
+        val = values[box]
+        for peer in peers[box]:
+            values = assign_value(values, peer, values[peer].replace(val, ''))
+    return values
 
 def only_choice(values):
     pass
