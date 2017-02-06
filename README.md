@@ -3,7 +3,7 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: We iterate through each unit and check if there exists the twins constraint (2 boxes of identical value of length 2). Knowing that these two boxes must have either one of the values, we can reduce the search space by eliminating the twin's value from all other boxes in the same unit. Now we have reduced the original problem into a simpler problem to solve.
+A: We iterate through each unit and check if there exists the twins constraint (2 boxes of identical value of length 2). Knowing that these two boxes must have either one of the values, we can reduce the search space by eliminating the twin's value from all other boxes in the same unit. No other boxes in the same unit can have a value contained in the twin's value. Now we have reduced the original problem into a simpler problem to solve.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
