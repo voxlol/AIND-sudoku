@@ -1,6 +1,6 @@
 assignments = []
 rows = 'ABCDEFGHI'
-cols = '123456789
+cols = '123456789'
 
 def cross(A, B):
     "Cross product of elements in A and elements in B."
@@ -8,7 +8,7 @@ def cross(A, B):
 
 boxes = cross(rows, cols)
 row_units = [cross(r, cols) for r in rows]
-col_units = [cross(c, rows) for c in cols]
+col_units = [cross(rows, c) for c in cols]
 box_units = [cross(r,c) for r in ('ABC', 'DEF', 'GHI') for c in ('123', '456', '789')]
 diagonal_units = [
     [r+c for r,c in zip(rows,cols)],
@@ -84,8 +84,8 @@ def only_choice(values):
         for digit in '123456789':
             dplaces = [box for box in u if digit in values[box]]
             if len(dplaces) == 1:
-                values = assign_values(values, dplaces[0], digit)
-    return new_values
+                values = assign_value(values, dplaces[0], digit)
+    return values
 
 def reduce_puzzle(values):
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
@@ -96,7 +96,7 @@ def reduce_puzzle(values):
         values = only_choice(values)
         solved_values_after = len([box for box in values.keys() if len(values[box]) == 1])
         stalled = solved_values_before == solved_values_after
-        if len([box for boxi n values.keys() if len(values[box]) == 0]):
+        if len([box for box in values.keys() if len(values[box]) == 0]):
             return False
     return values
 
