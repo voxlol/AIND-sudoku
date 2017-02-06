@@ -11,8 +11,8 @@ row_units = [cross(r, cols) for r in rows]
 col_units = [cross(rows, c) for c in cols]
 box_units = [cross(r,c) for r in ('ABC', 'DEF', 'GHI') for c in ('123', '456', '789')]
 diagonal_units = [
-    [r+c for r,c in zip(rows,cols)],
-    [r+c for r,c in zip(rows,reversed(cols))]]
+    [r+c for r,c in zip(rows,cols)],         # top-left to bottom-right diagonal
+    [r+c for r,c in zip(rows,reversed(cols))]] # top-right to bottom-left diagonal
 unitlist = row_units + col_units + box_units + diagonal_units
 units = {s: [u for u in unitlist if s in u] for s in boxes} # map box to units
 peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes) # map box to peers
