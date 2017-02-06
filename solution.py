@@ -73,7 +73,12 @@ def eliminate(values):
     return values
 
 def only_choice(values):
-    pass
+    for u in unitlist:
+        for digit in '123456789':
+            dplaces = [box for box in u if digit in values[box]]
+            if len(dplaces) == 1:
+                values = assign_values(values, dplaces[0], digit)
+    return new_values
 
 def reduce_puzzle(values):
     pass
