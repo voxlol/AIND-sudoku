@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: The search space is reduced by taking advantage of the property of naked twins - the values of the twins must be present in the twins. Ergo, we can eliminate the value of the twins from the other boxes in the unit it belongs to. Once we've applied the naked twins strategy, we can continue to further reduce the search space using previous strategies like elimination and only cohice.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: This is very similiar to normal sudoku except that we are adding another constraint that the two major diagonals have 1-9s in them. This too, reduces the search space and further propogates a reduction of possibilities.
 
 ### Install
 
