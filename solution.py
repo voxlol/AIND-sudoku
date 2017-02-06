@@ -9,6 +9,8 @@ diagonal_units = [
     [r+c for r,c in zip(rows,cols)],
     [r+c for r,c in zip(rows,reversed(cols))]]
 unitlist = row_units + col_units + box_units + diagonal_units
+units = {s: [u for u in unitlist if s in u] for s in boxes} # map box to units
+peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
 
 def assign_value(values, box, value):
     """
